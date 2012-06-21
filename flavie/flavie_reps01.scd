@@ -1,6 +1,6 @@
-d.dir = "/data/pndata/flavie/sons/";
+d.dirsons = "/pndata/flavie/sons/";
 // Gotz
-d.bufsgo = Buffer.readDir(d.dir++"go",ext:"wav",nlevels:0); 
+d.bufsgo = Buffer.readDir(d.dirsons++"go",ext:"wav",nlevels:0); 
 (
 d.go = ();
 d.bufsgo.do({|b| 
@@ -11,7 +11,7 @@ d.bufsgo.do({|b|
 );
 
 // François
-d.bufsfr = Buffer.readDir(d.dir++"fr",ext:"wav",nlevels:0); 
+d.bufsfr = Buffer.readDir(d.dirsons++"fr",ext:"wav",nlevels:0); 
 (
 d.fr = ();
 d.bufsfr.do({|b| 
@@ -22,7 +22,7 @@ d.bufsfr.do({|b|
 );
 
 // Vincent
-d.bufsvt = Buffer.readDir(d.dir++"vt",ext:"wav",nlevels:0); 
+d.bufsvt = Buffer.readDir(d.dirsons++"vt",ext:"wav",nlevels:0); 
 (
 d.vt = ();
 d.bufsvt.do({|b| 
@@ -33,7 +33,7 @@ d.bufsvt.do({|b|
 );
 
 // Rose A
-d.bufsra = Buffer.readDir(d.dir++"ra",ext:"wav",nlevels:0); 
+d.bufsra = Buffer.readDir(d.dirsons++"ra",ext:"wav",nlevels:0); 
 (
 d.ra = ();
 d.bufsra.do({|b| 
@@ -44,7 +44,7 @@ d.bufsra.do({|b|
 );
 
 // Rose B
-d.bufsrb = Buffer.readDir(d.dir++"rb",ext:"wav",nlevels:0); 
+d.bufsrb = Buffer.readDir(d.dirsons++"rb",ext:"wav",nlevels:0); 
 (
 d.rb = ();
 d.bufsrb.do({|b| 

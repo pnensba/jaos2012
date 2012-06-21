@@ -3,5 +3,8 @@
 dispatch sur plusieurs hps
 
 * flavie
+server.doWhenBooted
+
+** fait
 normalisations noms de fichiers
 passer en mono
