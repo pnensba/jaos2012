@@ -1,0 +1,2 @@
+-*- mode:outline;coding:utf-8 -*-
+
