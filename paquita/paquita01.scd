@@ -1,7 +1,8 @@
 // uses wslib (form quarks)
 s.boot;
 d = ();
-d.dir = "/data/pndata/paquita/";
+
+d.dir = "/pndata/paquita/";
 d.bufs = Buffer.readDir(d.dir,bufnumOffset:0, ext:"wav",nlevels:1); 
 // 
 d.bufs.do(_.play);

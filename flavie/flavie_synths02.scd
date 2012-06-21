@@ -14,6 +14,3 @@ SynthDef("magneto", { arg n = 0, out=1, amp_norm=1, amp_jeu=1;
 	~dur.(texte[partie]) 
 };	
 
-~joue.(d.go, 'a03', [1,2]) // de 1 ˆ 10
-~joue.(d.go, 'a03') // de 1 ˆ 10
-d.go.vols.a03 = 1
