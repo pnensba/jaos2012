@@ -2,18 +2,47 @@
 s.boot;
 d = ();
 d.dir = "/data/pndata/paquita/";
-d.bufs = Buffer.readDir(d.dir,bufnumOffset:0, ext:"wav",nlevels:1 ); 
+d.bufs = Buffer.readDir(d.dir,bufnumOffset:0, ext:"wav",nlevels:1); 
 // 
 d.bufs.do(_.play);
 (
-SynthDef("play", { arg n = 0, out=1;
- Out.ar(out, PlayBuf.ar(1,n, BufRateScale.kr(n),loop:0,doneAction:2));
+SynthDef("magneto", { arg n = 0, out=1, amp=1;
+ Out.ar(out, amp*PlayBuf.ar(1,n, BufRateScale.kr(n),loop:0,doneAction:2));
 }).load(s);
 )
 
+~multiplier = {arg x,y; x*y+10};
+~multiplier = {|x,y| x*y+10};
+~multiplier.(2,4)
+
 ~dur = {|n=0| d.bufs[n].numFrames/d.bufs[n].sampleRate};
-~joue = {|n=0,o=0| Synth.new(\play, [\n,n,\out,o]); ~dur.(n) };
-~joue.(1,1);~joue.(1,0)
+~joue = {|n=0,o=0,a=1| Synth.new(\magneto, [\n,n,\out,o,\amp,a]); ~dur.(n) };
+
+~joue.(3,0);~joue.(1,0);
+
+d.volumes = [
+1,0.1,1,1,1	,
+1,1,0.2,1,1
+];
+
+~joue.(9,0);
+~joue.(9,0,0.1);
+
+(
+~j = {
+	var son, hp, dur;
+	son = 11.rand;
+	hp = 2.rand;
+	dur = ~joue.(son,hp,d.volumes[son]);
+	dur;
+}
+)
+
+~j.()
+
+2.rand
+
+{10.do({var dur; dur = ~j.();dur.wait;})}.fork
 
 
 s.makeBundle

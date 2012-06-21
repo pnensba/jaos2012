@@ -1,2 +1,7 @@
 -*- mode:outline;coding:utf-8 -*-
+* a faire 
+dispatch sur plusieurs hps
 
+* flavie
+normalisations noms de fichiers
+passer en mono
