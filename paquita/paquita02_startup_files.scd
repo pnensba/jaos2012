@@ -3,7 +3,9 @@
 s = Server.local;
 Server.default = s;
 //o.device = "Digidesign HW ( 002 )";
-s.options.device = "JackRouter";
+//s.options.device = "JackRouter";
+s.options.device = "Fireface 400 (7DF)";
+
 s.boot;
 s.doWhenBooted({
  d = ();
@@ -12,8 +14,8 @@ s.doWhenBooted({
  (d.dir++"paquita_synths01_fonctions.scd").loadPaths;
  d.vols = ();
  (
-  	d.vols.r1 = 0.1;
-	d.vols.r2 = 0.1;
+  	d.vols.r1 = 1;
+	d.vols.r2 = 1;
 	d.vols.ring = 0.1;
 	d.vols.t3 = 0.1;
 	d.vols.t4 = 0.1;
@@ -27,13 +29,14 @@ s.doWhenBooted({
 })
 )
 
-~joue.('r2',[1,3,4]);~joue.('v1',[2,5])
+~joue.('r2',1);
+~joue.('v1',[1,2,3,4])
 
 (
 ~j = {
  var son, hp, dur;
  son = 11.rand;
- hp = 6.rand;
+ hp = 4.rand+1;
  dur = ~joue.(d.sn[son],hp);
  dur;
 });

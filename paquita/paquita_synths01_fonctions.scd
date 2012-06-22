@@ -9,9 +9,10 @@ SynthDef("magneto", { arg n = 0, amp_norm=1, amp_jeu=1;
 
 (
 ~dur = {|buf| buf.numFrames/buf.sampleRate};
-~joue = {|son,hps=0,amp_jeu=1| 
+~joue = {|son,hps=1,amp_jeu=1| 
 	var n, outs;
 	if (hps.class==1.class){hps = [hps]};
+	hps = hps -1;
 	outs = (0.dup(6)[hps]=1);
 	n = d.s[son].bufnum;
 	a = Synth.new(\magneto, [\n,n,\amp_norm,d.vols[son], \amp_jeu, amp_jeu]);

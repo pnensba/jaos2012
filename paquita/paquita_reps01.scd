@@ -1,5 +1,5 @@
 d.dirsons = "/pndata/paquita/sons/";
-d.bufs = Buffer.readDir(d.dirsons,ext:"wav",bufnumOffset:0,nlevels:0); 
+d.bufs = Buffer.readDir(d.dirsons,ext:"wav",bufnumOffset:0); 
 (
 d.s = ();
 d.sn = Array.new(11);
