@@ -1,3 +1,5 @@
+// ajpout na nb nc=>tout fonctionne
+
 d.dirsons = "/pndata/flavie/sons/";
 ~getkeys = {|dict| 
 	var arr;
@@ -77,5 +79,74 @@ d.bufsji.do({|b|
 );
 
 
+// nathalia A
+d.bufsna = Buffer.readDir(d.dirsons++"na",ext:"wav",nlevels:0); 
+(
+d.na = ();
+d.bufsna.do({|b| 
+	var name;
+	name = PathName(b.path).fileNameWithoutExtension;
+	d.na[name.asSymbol] = b;
+})
+);
+
+
+// nathalia B
+d.bufsnb = Buffer.readDir(d.dirsons++"nb",ext:"wav",nlevels:0); 
+(
+d.nb = ();
+d.bufsnb.do({|b| 
+	var name;
+	name = PathName(b.path).fileNameWithoutExtension;
+	d.nb[name.asSymbol] = b;
+})
+);
+
+// Nathalia C
+d.bufsnc = Buffer.readDir(d.dirsons++"nc",ext:"wav",nlevels:0); 
+(
+d.nc = ();
+d.bufsnc.do({|b| 
+	var name;
+	name = PathName(b.path).fileNameWithoutExtension;
+	d.nc[name.asSymbol] = b;
+})
+);
+
+
+// fabrice
+d.bufsfa = Buffer.readDir(d.dirsons++"fa",ext:"wav",nlevels:0); 
+(
+d.fa = ();
+d.bufsfa.do({|b| 
+	var name;
+	name = PathName(b.path).fileNameWithoutExtension;
+	d.fa[name.asSymbol] = b;
+})
+);
+
+
+// tamim
+d.bufsta = Buffer.readDir(d.dirsons++"ta",ext:"wav",nlevels:0); 
+(
+d.ta = ();
+d.bufsta.do({|b| 
+	var name;
+	name = PathName(b.path).fileNameWithoutExtension;
+	d.ta[name.asSymbol] = b;
+})
+);
+
+
+// pampos
+d.bufspa = Buffer.readDir(d.dirsons++"pa",ext:"wav",nlevels:0); 
+(
+d.pa = ();
+d.bufsji.do({|b| 
+	var name;
+	name = PathName(b.path).fileNameWithoutExtension;
+	d.pa[name.asSymbol] = b;
+})
+);
 
 

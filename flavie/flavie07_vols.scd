@@ -8,7 +8,7 @@ s.boot();
 s.doWhenBooted({
  d = ();
  d.dir = "/data/pngit/jaos2012/flavie/";
- (d.dir++"flavie_reps04_simple.scd").loadPaths; // lis les sons
+ (d.dir++"flavie_reps05_simple.scd").loadPaths; // lis les sons
  (d.dir++"flavie_synths03_hps.scd").loadPaths; // joue les sons
 })
 )
@@ -201,4 +201,13 @@ d.ji.vols.b01 = 0.03;~joue.(d.ji,'b01');
 
 
 
+//Nathalia A
+
+d.na.vols = ();
+d.na.vols.a01 = 0.03;~joue.(d.na,'a01');
+
+//nathalia B
+
+d.nb.vols = ();
+d.nb.vols.a01 = 0.03;~joue.(d.nb,'a01');
 

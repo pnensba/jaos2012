@@ -77,5 +77,40 @@ d.bufsji.do({|b|
 );
 
 
+// nathalia A
+d.bufsna = Buffer.readDir(d.dirsons++"na",ext:"wav",nlevels:0); 
+(
+d.na = ();
+d.bufsna.do({|b| 
+	var name;
+	name = PathName(b.path).fileNameWithoutExtension;
+	d.na[name.asSymbol] = b;
+})
+);
+
+
+// nathalia B
+d.bufsnb = Buffer.readDir(d.dirsons++"nb",ext:"wav",nlevels:0); 
+(
+d.nb = ();
+d.bufsnb.do({|b| 
+	var name;
+	name = PathName(b.path).fileNameWithoutExtension;
+	d.nb[name.asSymbol] = b;
+})
+);
+
+// Nathalia C
+d.bufsnc = Buffer.readDir(d.dirsons++"nc",ext:"wav",nlevels:0); 
+(
+d.nc = ();
+d.bufsnc.do({|b| 
+	var name;
+	name = PathName(b.path).fileNameWithoutExtension;
+	d.nc[name.asSymbol] = b;
+})
+);
+
+
 
 

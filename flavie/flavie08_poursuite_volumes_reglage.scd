@@ -7,55 +7,77 @@ s.options.device = "Fireface 400 (7DF)";
 s.boot();
 s.doWhenBooted({
  d = ();
- d.dir = "/data/pngit/jaos2012/flavie/";
- (d.dir++"flavie_reps04_simple.scd").loadPaths; // lis les sons
+ d.dir = "/pndata/pngit/jaos2012/flavie/";
+ (d.dir++"flavie_reps05_simple.scd").loadPaths; // lis les sons
+  (d.dir++"flavie_volumes01.scd").loadPaths; // les volumes
  (d.dir++"flavie_synths03_hps.scd").loadPaths; // joue les sons
 })
+);
+
+/*
+texte = locuteur
+parties A,B ...
+extraits 01, 02, ...
+*/
+
+/*
+on tire une partie, une lettre A,B ou C
+*/
+
+(
+~joue_rose = {
+	var partie, extraits;
+	partie = ['a','b','c'].choose; // tire une partie
+	extraits = d.ra[partie];
+	{extraits.do({|extrait| ~joue.(d.ra,(partie++extrait).asSymbol,4.rand+1).wait})}.fork;
+}
 )
 
-/* Gotz
-part1
-*/
+~joue_rose.()
+
+//Gštz (toujours assez faibles, de l'ordre du bruissement)
+
+
 d.go.vols = ();
-d.go.vols.a01 = 0.07;~joue.(d.go,'a01',[1,4]);
-d.go.vols.a02 = 0.07;~joue.(d.go,'a02',2);
-d.go.vols.a03 = 0.07;~joue.(d.go,'a03');
-d.go.vols.a04 = 2;~joue.(d.go,'a04');
-d.go.vols.a05 = 0.7;~joue.(d.go,'a05');
-d.go.vols.a06 = 0.3;~joue.(d.go,'a06');
-d.go.vols.b01 = 0.3;~joue.(d.go,'b01');
-d.go.vols.b02 = 1;~joue.(d.go,'b02');
-d.go.vols.c01 = 0.07;~joue.(d.go,'c01');
-d.go.vols.c02 = 0.07;~joue.(d.go,'c02');
-d.go.vols.c03 = 0.07;~joue.(d.go,'c03');
-d.go.vols.c04 = 0.07;~joue.(d.go,'c04');
-d.go.vols.c05 = 0.07;~joue.(d.go,'c05');
-d.go.vols.d01 = 0.03;~joue.(d.go,'d01');
-d.go.vols.d02 = 0.03;~joue.(d.go,'d02');
-d.go.vols.d03 = 0.03;~joue.(d.go,'d03');
-d.go.vols.d04 = 0.03;~joue.(d.go,'d04');
-d.go.vols.d05 = 0.03;~joue.(d.go,'d05');
-d.go.vols.d06 = 0.03;~joue.(d.go,'d06');
-d.go.vols.d07 = 0.03;~joue.(d.go,'d07');
-d.go.vols.d08 = 0.03;~joue.(d.go,'d08');
-d.go.vols.d09 = 0.03;~joue.(d.go,'d09');
-d.go.vols.d10 = 0.03;~joue.(d.go,'d10');
-d.go.vols.d11 = 0.03;~joue.(d.go,'d11');
-d.go.vols.d12 = 0.03;~joue.(d.go,'d12');
-d.go.vols.d13 = 0.03;~joue.(d.go,'d13');
-d.go.vols.d14 = 0.03;~joue.(d.go,'d14');
-d.go.vols.e01 = 0.07;~joue.(d.go,'e01');
-d.go.vols.e02 = 0.07;~joue.(d.go,'e02');
-d.go.vols.e03 = 0.07;~joue.(d.go,'e03');
-d.go.vols.e04 = 0.07;~joue.(d.go,'e04');
-d.go.vols.e05 = 0.07;~joue.(d.go,'e05');
-d.go.vols.e06 = 0.07;~joue.(d.go,'e06');
-d.go.vols.e07 = 0.07;~joue.(d.go,'e07');
-d.go.vols.e08 = 0.07;~joue.(d.go,'e08');
-d.go.vols.e09 = 0.07;~joue.(d.go,'e09');
-d.go.vols.e10 = 0.07;~joue.(d.go,'e10');
-d.go.vols.e11 = 0.07;~joue.(d.go,'e11');
-d.go.vols.e12 = 1;~joue.(d.go,'e12');
+d.go.vols.a01 = 1;~joue.(d.go,'a01',[2,3]);
+d.go.vols.a02 = 1;~joue.(d.go,'a02',[2,3,4]);
+d.go.vols.a03 = 1;~joue.(d.go,'a03',2);
+d.go.vols.a04 = 1;~joue.(d.go,'a04',[2,3,4]);
+d.go.vols.a05 = 1;~joue.(d.go,'a05',[2,3]);
+d.go.vols.a06 = 1;~joue.(d.go,'a06',2);
+d.go.vols.b01 = 0.5;~joue.(d.go,'b01',[1,2,3,4]); // passage dans le bassin?
+d.go.vols.b02 = 0.7;~joue.(d.go,'b02',3);
+d.go.vols.c01 = 1.3;~joue.(d.go,'c01',[2,4]);
+d.go.vols.c02 = 1.3;~joue.(d.go,'c02',[4,1]);
+d.go.vols.c03 = 1.3;~joue.(d.go,'c03',[1,3]);
+d.go.vols.c04 = 1.3;~joue.(d.go,'c04',[2,3]);
+d.go.vols.c05 = 1.5;~joue.(d.go,'c05',[1,2,3,4]);
+d.go.vols.d01 = 0.7;~joue.(d.go,'d01',[1,2,3,4]);
+d.go.vols.d02 = 0.7;~joue.(d.go,'d02',[1,2,3]);
+d.go.vols.d03 = 0.7;~joue.(d.go,'d03',[1,2,3,4]);
+d.go.vols.d04 = 0.7;~joue.(d.go,'d04',[2,3,4]);
+d.go.vols.d05 = 0.7;~joue.(d.go,'d05',[1,2,3]);
+d.go.vols.d06 = 0.7;~joue.(d.go,'d06',[2,3,4]);
+d.go.vols.d07 = 0.7;~joue.(d.go,'d07',[1,2,3]);
+d.go.vols.d08 = 0.7;~joue.(d.go,'d08',[2,3,4]);
+d.go.vols.d09 = 0.7;~joue.(d.go,'d09',[1,2,3]);
+d.go.vols.d10 = 0.7;~joue.(d.go,'d10',[2,3,4]);
+d.go.vols.d11 = 0.7;~joue.(d.go,'d11',[1,2,3]);
+d.go.vols.d12 = 0.7;~joue.(d.go,'d12',[2,3,4]);
+d.go.vols.d13 = 0.7;~joue.(d.go,'d13',[1,2,3]);
+d.go.vols.d14 = 0.7;~joue.(d.go,'d14',[2,3,4]);
+d.go.vols.e01 = 1.4;~joue.(d.go,'e01',[1,2,3,4]);
+d.go.vols.e02 = 1.4;~joue.(d.go,'e02',[1,2,3,4]);
+d.go.vols.e03 = 1.4;~joue.(d.go,'e03');
+d.go.vols.e04 = 1.4;~joue.(d.go,'e04');
+d.go.vols.e05 = 1.4;~joue.(d.go,'e05');
+d.go.vols.e06 = 1.4;~joue.(d.go,'e06');
+d.go.vols.e07 = 1.4;~joue.(d.go,'e07');
+d.go.vols.e08 = 1.4;~joue.(d.go,'e08');
+d.go.vols.e09 = 1.4;~joue.(d.go,'e09');
+d.go.vols.e10 = 1.4;~joue.(d.go,'e10');
+d.go.vols.e11 = 1.4;~joue.(d.go,'e11');
+d.go.vols.e12 = 1.7;~joue.(d.go,'e12');
 d.go.vols.f01 = 0.03;~joue.(d.go,'f01');
 d.go.vols.g01 = 0.07;~joue.(d.go,'g01');
 d.go.vols.g02 = 0.07;~joue.(d.go,'g02');
@@ -193,12 +215,43 @@ d.rb.vols.c02 = 0.03;~joue.(d.rb,'c02');
 d.rb.vols.c03 = 0.03;~joue.(d.rb,'c03');
 d.rb.vols.c04 = 0.03;~joue.(d.rb,'c04');
 
-//Jim
-
-d.ji.vols = ();
-d.ji.vols.b01 = 0.03;~joue.(d.ji,'b01');
 
 
+// Jim
+
+d.ji.vols = (); 
+d.ji.vols.a01 = 1.5 ;~joue.(d.ji,'a01',[1,4]);
+d.ji.vols.b01 = 1.5 ;~joue.(d.ji,'b01',[1,4]);
+d.ji.vols.b02 = 0.8 ;~joue.(d.ji,'b02',[1,4]); 
+d.ji.vols.b03 = 0.7 ;~joue.(d.ji,'b03',[1,4]);  
+d.ji.vols.c02 = 1 ;~joue.(d.ji,'c02',[1,4]);  
+d.ji.vols.d01 = 1.3 ;~joue.(d.ji,'d01',[1,4]); 
+d.ji.vols.e01 = 0.5 ;~joue.(d.ji,'e01',[1,4]); 
+
+// nathalia a
 
 
+d.na.vols = (); 
+d.na.vols.a01 = 0 ;~joue.(d.na,'a01',[1,4]);
+d.na.vols.a02 = 1 ;~joue.(d.na,'a02',[1,4]);
+d.na.vols.a03 = 1 ;~joue.(d.na,'a03',[1,4]);
+d.na.vols.a04 = 1 ;~joue.(d.na,'a04',[1,4]);
+d.na.vols.a05 = 1 ;~joue.(d.na,'a05',[1,4]);
 
+// nathalia b
+
+d.nb.vols = (); 
+d.nb.vols.a01 = 1 ;~joue.(d.nb,'a01',[1,4]);
+d.nb.vols.a02 = 1 ;~joue.(d.nb,'a02',[1,4]);
+d.nb.vols.a03 = 1 ;~joue.(d.nb,'a03',[1,4]);
+d.nb.vols.a04 = 1 ;~joue.(d.nb,'a04',[1,4]);
+d.nb.vols.a05 = 1 ;~joue.(d.nb,'a05',[1,4]);
+
+
+// nathalia c
+
+d.nc.vols = ();
+d.nc.vols.a01 = 0,05 ;~joue.(d.nc,'a01',[1,4]);
+d.nc.vols.b01 = 1 ;~joue.(d.nc,'b01',[1,4]);
+d.nc.vols.c01 = 1 ;~joue.(d.nc,'c01',[1,4]);
+d.nc.vols.c02 = 1 ;~joue.(d.nc,'c02',[1,4]);
