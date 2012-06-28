@@ -1,6 +1,10 @@
 -*- mode:outline;coding:utf-8 -*-
-* a faire 
-dispatch sur plusieurs hps
+* sara
+bundle (envoyer les buffer exactement en même temps)
+s.makeBundle( 1, { Synth( "default" ); Synth( "default", [ \freq, 660 ] ) } ); 
+
+* pampos
+jouer avec la voix (omniprésente dans les quatre du haut)
 
 * flavie
 server.doWhenBooted

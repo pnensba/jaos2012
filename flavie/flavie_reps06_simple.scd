@@ -11,7 +11,7 @@ d.dirsons = "/pndata/flavie/sons/";
 	var keys, arr;
 	keys = ~getkeys.(texte);
 	arr = Array.new(100);
-	keys.do({|key| if (key.asString.size==1) {arr.add(key)}});
+	keys.do({|key| if (key.asString.size==1, {arr.add(key)})});
 	arr.sort();
 };
 
