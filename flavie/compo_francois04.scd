@@ -34,10 +34,6 @@ d.fr.vols.m01 = 0.4;  //multiplié pour echo
 d.fr.vols.m01 = 0.2;
 d.fr.vols.m01 = 0.05;
 
-d.fr_parties = ['a','b','c','d','e','f','g','h','i','j','k','l','m'];
-d.fr_hps = [[6,9,10],[7,8],5];
-d.fr_hps_proba = [4/7,2/7,1/7];
-d.fr_hp = d.fr_hps.wchoose(d.fr_hps_proba);
 )
 
 

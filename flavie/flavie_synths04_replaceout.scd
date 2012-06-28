@@ -20,7 +20,7 @@ SynthDef("magneto", { arg n = 0, amp_norm=1, amp_jeu=1;
 	a.set(\outs,outs);
 	~dur.(texte[partie]);
 };	
-)
+);
 
 // ReplaceOut
 
