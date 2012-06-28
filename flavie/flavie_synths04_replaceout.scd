@@ -25,7 +25,7 @@ SynthDef("magneto", { arg n = 0, amp_norm=1, amp_jeu=1;
 // ReplaceOut
 
 (
-SynthDef("magneto", { arg n = 0, amp_norm=1, amp_jeu=1;
+SynthDef("magneto", { arg out=0, n = 0, amp_norm=1, amp_jeu=1;
  var sig, amps;
  sig = amp_norm*amp_jeu*PlayBuf.ar(1,n, BufRateScale.kr(n),loop:0,doneAction:2);
  ReplaceOut.ar(out,sig);
@@ -34,15 +34,15 @@ SynthDef("magneto", { arg n = 0, amp_norm=1, amp_jeu=1;
 
 (
 ~dur = {|buf| buf.numFrames/buf.sampleRate};
-~joue0 = {|texte,partie,hps=1,amp_jeu=1| 
+~joue = {|texte,partie,hps=1,amp_jeu=1| 
 	var n, outs;
 	if (hps.class==1.class){hps = [hps]};
 	hps = hps - 1;
-	hps.postln;
-	outs = (0.dup(10)[hps]=1);
 	n = texte[partie].bufnum;
-	a = Synth.new(\magneto, [\n,n,\amp_norm,texte.vols[partie], \amp_jeu, amp_jeu]);
-	a.set(\outs,outs);
+	hps.do({|hp| Synth.tail(s,\magneto, [\out,hp, \n,n,\amp_norm,texte.vols[partie], \amp_jeu, amp_jeu])});
 	~dur.(texte[partie]);
 };	
 )
+
+~joue.(d.go,'a01',0,10)
+~joue.(d.rb,'a01',0,10)

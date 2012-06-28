@@ -10,7 +10,7 @@ s.doWhenBooted({
  d.dir = "/pndata/pngit/jaos2012/flavie/";
  (d.dir++"flavie_reps06_simple.scd").loadPaths; // lis les sons
   (d.dir++"flavie_volumes01.scd").loadPaths; // les volumes
- (d.dir++"flavie_synths03_hps.scd").loadPaths; // joue les sons
+ (d.dir++"flavie_synths04_replaceout.scd").loadPaths; // joue les sons
 })
 );
 
